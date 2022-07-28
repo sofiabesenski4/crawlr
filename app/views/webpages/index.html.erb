@@ -2,6 +2,8 @@
 
 <h1>Webpages</h1>
 
+<%= turbo_stream_from "webpages", channel: CrawlChannel %>
+ 
 <div id="webpages">
   <% @webpages.each do |webpage| %>
     <%= render webpage %>
@@ -10,5 +12,6 @@
     </p>
   <% end %>
 </div>
+
 
 <%= link_to "New webpage", new_webpage_path %>

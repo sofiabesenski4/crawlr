@@ -8,6 +8,9 @@ class WebpagesController < ApplicationController
 
   # GET /webpages/1 or /webpages/1.json
   def show
+    # Button here that says start crawling..?
+
+
   end
 
   # GET /webpages/new
@@ -58,13 +61,18 @@ class WebpagesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_webpage
-      @webpage = Webpage.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def webpage_params
-      params.require(:webpage).permit(:url, :screenshot)
-    end
+  def get_raw_html
+    Net::HTTP.get(URI(@webpage.url)).force_encoding("UTF-8")
+  end
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_webpage
+    @webpage = Webpage.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def webpage_params
+    params.require(:webpage).permit(:url, :screenshot)
+  end
 end
