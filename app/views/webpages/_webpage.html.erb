@@ -1,0 +1,12 @@
+<div id="<%= dom_id webpage %>">
+  <p>
+    <strong>Url:</strong>
+    <%= webpage.url %>
+  </p>
+
+  <p>
+    <strong>Screenshot:</strong>
+    <%= link_to webpage.screenshot.filename, webpage.screenshot if webpage.screenshot.attached? %>
+  </p>
+
+</div>
